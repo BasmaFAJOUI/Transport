@@ -50,3 +50,31 @@ jobs:
           docker push basmafj/ticket-service:latest
           docker push basmafj/timetable-service:latest
           docker push basmafj/subscription-service:latest
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build-and-push
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-north-1
+
+      - name: Update kubeconfig for Amazon EKS
+        run: aws eks update-kubeconfig --name spacenews --region eu-north-1
+
+      - name: Deploy to Amazon EKS
+        run: |
+          kubectl apply -f api-gateway-deployment.yaml
+          kubectl apply -f geo-location-service-deployment.yaml
+          kubectl apply -f user-service-deployment.yaml
+          kubectl apply -f ticket-service-deployment.yaml
+          kubectl apply -f timetable-service-deployment.yaml
+          kubectl apply -f subscription-service-deployment.yaml
+          kubectl apply -f mongo-db-deployment.yaml
+          kubectl apply -f postgres-db-deployment.yaml
