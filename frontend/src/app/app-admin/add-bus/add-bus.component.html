@@ -1,0 +1,63 @@
+<section class="admin-dashboard">
+  <div class="container">
+    <div class="row justify-content-center">
+      <!-- Column for the Animated Image -->
+      <div class="col-12 text-center mb-5">
+        <img
+          src="assets/img/hero-img.png"
+          class="img-fluid animated"
+          alt="Admin Dashboard Illustration"
+          width="50%"
+        />
+      </div>
+
+      <!-- Column for the Admin Content -->
+      <div class="col-12 text-center">
+        <h1 class="display-4 fw-bold mb-4" style="color: #080163">
+          Tableau de Bord Administrateur
+        </h1>
+        <p class="lead mb-5" style="color: rgb(0, 38, 56)">
+          Gérez les trajets et les bus de manière efficace.
+        </p>
+
+        <!-- Cards for Admin Actions -->
+        <div class="cards-grid">
+          <!-- Card for Managing Trajets -->
+          <div class="card admin-card shadow-lg hover-effect">
+            <div class="card-body text-center d-flex flex-column">
+              <i class="fas fa-route fa-3x mb-3 icon-gradient"></i>
+              <h3 class="card-title h5 fw-bold">Ajouter bus</h3>
+              <p class="card-text flex-grow-1 small text-muted">
+                Ajoutez les bus.
+              </p>
+              <button
+                class="btn btn-gradient-primary btn-lg w-100 mt-auto"
+                routerLink="/ajouterrbus"
+              >
+                Ajouter bus
+              </button>
+            </div>
+          </div>
+
+          <!-- Card for Managing Abonnements -->
+          <!-- Card for Assigning Trajets to Bus -->
+          <div class="card admin-card shadow-lg hover-effect">
+            <div class="card-body text-center d-flex flex-column">
+              <i class="fas fa-link fa-3x mb-3 icon-gradient"></i>
+              <h3 class="card-title h5 fw-bold">Affecter un Trajet à un Bus</h3>
+              <p class="card-text flex-grow-1 small text-muted">
+                Affectez des trajets existants à un bus.
+              </p>
+              <button
+                class="btn btn-gradient-primary btn-lg w-100 mt-auto"
+                routerLink="/assign"
+              >
+                Accéder à l'Affectation
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
